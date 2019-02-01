@@ -25,12 +25,19 @@
 //   }
 // };
 
+path = import("path");
+
 module.exports = {
-  entry: "./client/index.js", // assumes your entry point is the index.js in the root of your project folder
+  entry: "./index.js", // assumes your entry point is the index.js in the root of your project folder
   mode: "development",
   output: {
-    path: __dirname, // assumes your bundle.js will also be in the root of your project folder
-    filename: "./public/bundle.js"
+    // publicPath: "/"
+    // filename: "bundle.js"
+    path: path.resolve(__dirname), // string
+    // the target directory for all output files
+    // must be an absolute path (use the Node.js path module)
+    filename: "bundle.js", // string    // the filename template for entry chunks
+    publicPath: "/" // string
   },
   devtool: "source-maps",
   module: {
